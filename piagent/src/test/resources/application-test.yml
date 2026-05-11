@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: test
+
+piagent:
+  agent:
+    max-steps: 10
+    default-system-prompt: "你是一个智能助手。"
+
+  llm:
+    provider: openai
+    openai:
+      api-key: test-key
+      model-name: gpt-4o-mini
+
+  event:
+    sse-enabled: true
