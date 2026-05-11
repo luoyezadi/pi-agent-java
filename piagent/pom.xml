@@ -23,7 +23,7 @@
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <langchain4j.version>1.0.0</langchain4j.version>
+        <langchain4j.version>0.36.2</langchain4j.version>
         <testcontainers.version>1.20.4</testcontainers.version>
     </properties>
 
@@ -52,7 +52,7 @@
             <version>${langchain4j.version}</version>
         </dependency>
 
-        <!-- LangChain4j Ollama: 支持 Ollama 本地模型 -->
+        <!-- LangChain4j Ollama: 支持 Ollama 本地模型（可选） -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-ollama</artifactId>
@@ -132,9 +132,6 @@
                 <configuration>
                     <source>25</source>
                     <target>25</target>
-                    <compilerArgs>
-                        <arg>--enable-preview</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
 
@@ -144,7 +141,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
+                    <argLine>-Djdk.attach.allowAttachSelf=true</argLine>
                 </configuration>
             </plugin>
         </plugins>

@@ -3,6 +3,7 @@ package com.example.piagent.tool.builtin;
 import com.example.piagent.tool.ToolExecutionRequest;
 import com.example.piagent.tool.ToolExecutionResult;
 import com.example.piagent.tool.ToolExecutor;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

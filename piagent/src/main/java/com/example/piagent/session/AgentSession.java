@@ -69,4 +69,23 @@ public class AgentSession {
         this.messages.add(message);
         this.updatedAt = Instant.now();
     }
+
+    public static class Builder {
+        private String id;
+        private String name;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public AgentSession build() {
+            return new AgentSession(this);
+        }
+    }
 }

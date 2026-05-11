@@ -2,10 +2,7 @@ package com.example.piagent.config;
 
 import com.example.piagent.llm.LlmProperties;
 import dev.langchain4j.model.chat.ChatLanguageModel;
-import dev.langchain4j.model.chat.oai.ChatCompletionLanguageModel;
-import dev.langchain4j.model.chat.oai.ChatCompletionRequest;
-import dev.langchain4j.model.chat.oai.ChatCompletionResponse;
-import dev.langchain4j.model.chat.oai.OpenAiChatModel;
+import dev.langchain4j.model.openai.OpenAiChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -47,7 +44,7 @@ public class LangChain4jConfiguration {
     private ChatLanguageModel createOllamaModel(LlmProperties properties) {
         LlmProperties.OllamaConfig config = properties.getOllama();
 
-        return dev.langchain4j.model.ollama.chat.OllamaChatModel.builder()
+        return dev.langchain4j.model.ollama.OllamaChatModel.builder()
                 .baseUrl(config.getBaseUrl())
                 .modelName(config.getModelName())
                 .timeout(java.time.Duration.ofSeconds(config.getTimeout()))

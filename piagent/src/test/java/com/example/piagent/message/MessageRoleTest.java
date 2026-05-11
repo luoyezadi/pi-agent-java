@@ -60,11 +60,11 @@ class MessageRoleTest {
     @Test
     @DisplayName("应该能从字符串值获取枚举")
     void shouldGetEnumFromStringValue() {
-        assertThat(MessageRole.fromValue("user")).isEqualTo(MessageRole.USER);
-        assertThat(MessageRole.fromValue("assistant")).isEqualTo(MessageRole.ASSISTANT);
-        assertThat(MessageRole.fromValue("system")).isEqualTo(MessageRole.SYSTEM);
-        assertThat(MessageRole.fromValue("tool")).isEqualTo(MessageRole.TOOL);
-        assertThat(MessageRole.fromValue("tool_result")).isEqualTo(MessageRole.TOOL_RESULT);
+        assertThat(MessageRole.fromValue("user")).contains(MessageRole.USER);
+        assertThat(MessageRole.fromValue("assistant")).contains(MessageRole.ASSISTANT);
+        assertThat(MessageRole.fromValue("system")).contains(MessageRole.SYSTEM);
+        assertThat(MessageRole.fromValue("tool")).contains(MessageRole.TOOL);
+        assertThat(MessageRole.fromValue("tool_result")).contains(MessageRole.TOOL_RESULT);
     }
 
     @Test

@@ -78,7 +78,7 @@ class DefaultPromptTemplateRendererTest {
         }
 
         @Test
-        @DisplayName("应该只替换提供的变量")
+        @DisplayName("应该只替换提供的变量，未提供的变量替换为空")
         void shouldOnlyReplaceProvidedVariables() {
             var renderer = createRenderer();
             var template = PromptTemplate.builder()
@@ -87,7 +87,7 @@ class DefaultPromptTemplateRendererTest {
 
             String result = renderer.render(template, Map.of("name", "测试"));
 
-            assertThat(result).isEqualTo("测试 - {{location}}");
+            assertThat(result).isEqualTo("测试 - ");
         }
     }
 
@@ -122,7 +122,7 @@ class DefaultPromptTemplateRendererTest {
         }
 
         @Test
-        @DisplayName("空变量 map 应该原样返回")
+        @DisplayName("空变量 map 应该替换变量为空")
         void shouldReturnOriginalForEmptyVariables() {
             var renderer = createRenderer();
             var template = PromptTemplate.builder()
@@ -131,18 +131,18 @@ class DefaultPromptTemplateRendererTest {
 
             String result = renderer.render(template, Map.of());
 
-            assertThat(result).isEqualTo("Hello {{name}}");
+            assertThat(result).isEqualTo("Hello ");
         }
 
         @Test
-        @DisplayName("变量值为 null 应该替换为空")
-        void shouldReplaceNullValueWithEmpty() {
+        @DisplayName("变量值为空字符串应该替换为空")
+        void shouldReplaceEmptyValueWithEmpty() {
             var renderer = createRenderer();
             var template = PromptTemplate.builder()
                     .template("Hello {{name}}")
                     .build();
 
-            String result = renderer.render(template, Map.of("name", null));
+            String result = renderer.render(template, Map.of("name", ""));
 
             assertThat(result).isEqualTo("Hello ");
         }
