@@ -27,6 +27,7 @@ public class BuiltinToolConfiguration {
         return args -> {
             registerCalculatorTool(toolRegistry, executorRegistry);
             registerCurrentTimeTool(toolRegistry, executorRegistry);
+            registerSearchTool(toolRegistry, executorRegistry);
         };
     }
 
@@ -51,5 +52,11 @@ public class BuiltinToolConfiguration {
                 .build();
         toolRegistry.register(definition);
         executorRegistry.register("current_time", new CurrentTimeToolExecutor());
+    }
+
+    private void registerSearchTool(ToolRegistry toolRegistry, ToolExecutorRegistry executorRegistry) {
+        ToolDefinition definition = SearchToolExecutor.createToolDefinition();
+        toolRegistry.register(definition);
+        executorRegistry.register("search", new SearchToolExecutor());
     }
 }
